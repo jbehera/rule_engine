@@ -1,0 +1,26 @@
+<h2>Result</h2>
+
+<br/>
+
+
+
+<table border="1">
+	<tr>
+		<th>Name</th>
+		<th>Price</th>
+		<th>Category</th>
+		<th>Discountinued</th>
+		<th>Tax Percent</th>
+		<th>Total</th>
+	</tr>
+<% @qry_result.each do |r| %>
+	<tr>
+		<td><%= r[:name] %></td>
+		<td><%= r[:price] %></td>
+		<td><%= r[:category_id] %></td>
+		<td><%= r[:discontinued] %></td>
+		<td><%= r[:tax_percent] %></td>
+		<td><%= r[:price] + r[:price] * r[:tax_percent]  %></td>
+	</tr>
+<% end %>
+</table>

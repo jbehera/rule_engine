@@ -1,0 +1,36 @@
+<h1>Rails Rule Engine</h1>
+
+<br /> <br /> <br /> 
+
+<%= form_for :rule, :url => {:action => 'result'} do |f| %>
+	<fieldset>
+		<legend>Given</legend>
+		<div>
+			<%= f.label :category_id %>
+			<%= f.collection_select :category_id, Category.all, :id, :name %>
+		</div>
+		<div>
+			<%= f.select :given_for, @rule.given_for %>			
+			<%= f.select :given_operator, @rule.given_operator.map {|o| [o[0], o[1]]} %>
+			<%= f.text_field :given_value %>
+		</div>
+	</fieldset>
+
+	<br />
+
+	<fieldset>
+		<legend>Then</legend>
+		<div>
+			<%= f.select :then_for, @rule.then_for.map {|o| [o[1], o[0] ] } %>
+			<%= f.select :then_operator, @rule.then_operator.map {|o| [o[0], o[1]]} %>
+			<%= f.text_field :then_value %>
+		</div>
+	</fieldset>
+	<br />
+	<br />
+	<div>
+		<%= f.submit "Apply Filter" %>
+	</div>
+<% end %>
+
+
